@@ -1,2 +1,2 @@
 # DEV-ENV
-Automatic Server Analysis And Configuration
+Automate the setup envirements to the frontend , backend developpers using vagrant, ansible.
