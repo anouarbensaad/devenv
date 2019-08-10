@@ -32,31 +32,31 @@ def envtest():
     p.communicate()
 
     # Front End Envirement.
-    cmd = ['whiptail', '--title', "Front End Envirments", '--checklist', "Choose Frameworks", '20', '78', '4',
+    FE_ENV = ['whiptail', '--title', "Front End Envirments", '--checklist', "Choose Frameworks", '20', '78', '4',
     " Angular", " Allow connections to other hosts", "ON",
     " React", " Allow connections from other hosts", "OFF",
     " Vue.JS", " Allow mounting of local devices", "OFF",
     " Preact.JS", " Allow mounting of remote devices", "OFF"]
-    p = subprocess.Popen(cmd)
+    p = subprocess.Popen(FE_ENV)
     p.communicate()
 
     # Back End Envirement.
-    cmd = ['whiptail', '--title', "Back End Envirments", '--checklist', "Choose Frameworks", '20', '78', '4',
+    BE_ENV = ['whiptail', '--title', "Back End Envirments", '--checklist', "Choose Frameworks", '20', '78', '4',
     " Spring Boot", " Allow connections to other hosts", "ON",
     " Express", " Allow connections from other hosts", "OFF",
     " Ruby on Rails", " Allow mounting of local devices", "OFF",
     " Laravel Lumen ", " Allow mounting of remote devices", "OFF",
     " Django", " Allow connections from other hosts", "OFF",
     " Symfony", " Allow mounting of local devices", "OFF",]
-    p = subprocess.Popen(cmd)
+    p = subprocess.Popen(BE_ENV)
     p.communicate()
 
     # Others Envirement.
-    cmd = ['whiptail', '--title', "Other Envirments", '--checklist', "Choose Apps", '20', '78', '4',
+    O_ENV = ['whiptail', '--title', "Other Envirments", '--checklist', "Choose Apps", '20', '78', '4',
     " Apache2", " Allow connections to other hosts", "ON",
     " Nginx", " Allow connections from other hosts", "OFF",
     " php7.2", " Allow mounting of local devices", "OFF",]
-    p = subprocess.Popen(cmd)
+    p = subprocess.Popen(O_ENV)
     p.communicate()
 
 # Generate Vagrantfile
