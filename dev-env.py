@@ -1,7 +1,5 @@
-
 from __future__ import print_function
 import os, sys , time ,subprocess
-
 def user():
     U = os.popen("who |tr -s ' ' |cut -d' ' -f1").read().splitlines()
     for user in U:
@@ -24,14 +22,15 @@ def Menu():
     ]
     envtype = subprocess.run(ENV_TYPE , stderr=subprocess.PIPE).stderr.decode('utf-8')
     print(envtype)
-    if envtype == "Front End" : 
+    if envtype == "Front End": 
         FE_ENV = ['whiptail', '--title', "Front End Envirments", '--checklist', "Choose Frameworks", '20', '78', '4',
         "Angular", " Allow connections to other hosts", "OFF",
         "React", " Allow connections from other hosts", "OFF",
         "Vue.JS", " Allow mounting of local devices", "OFF",
         "Preact.JS", " Allow mounting of remote devices", "OFF"]
-        feenv = subprocess.run(FE_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8')
-        print(feenv)
+        feenv = subprocess.run(FE_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8').replace('\"','').split()
+        for i in range(len(feenv)):
+            print(feenv[i])
     elif envtype == "Back End":
         BE_ENV = ['whiptail', '--title', "Back End Envirments", '--checklist', "Choose Frameworks", '20', '78', '6',
         "Spring Boot", " Allow connections to other hosts", "OFF",
@@ -40,9 +39,8 @@ def Menu():
         "Laravel Lumen ", " Allow mounting of remote devices", "OFF",
         "Django", " Allow connections from other hosts", "OFF",
         "Symfony", " Allow mounting of local devices", "OFF",]
-        beenv = subprocess.run(BE_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8')
+        beenv = subprocess.run(BE_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8').replace('\"','').split()
         print(beenv)
-    #p.communicate()
     # Back End Envirement.
     else:
         # Others Envirement.
@@ -50,7 +48,7 @@ def Menu():
         "Apache2", " Allow connections to other hosts", "OFF",
         "Nginx", " Allow connections from other hosts", "OFF",
         "php7.2", " Allow mounting of local devices", "OFF",]
-        oenv = subprocess.run(O_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8')
+        oenv = subprocess.run(O_ENV , stderr=subprocess.PIPE).stderr.decode('utf-8').replace('\"','').split()
         print(oenv)
 # Generate AnsibleContainer
 Menu()
